@@ -1,138 +1,127 @@
-# Vending Machine (Mealy State Machine) :coffee: :dollar:
+# Vending Machine (Mealy State Machine) 
+# :coffee ₹
 
-This project showcases a **Vending Machine** design using a **Mealy State Machine** in **Verilog**. The machine dispenses a product when the correct amount of money is inserted and displays the status of the transaction (whether the user still owes money or if change is due).
+This project showcases a **Vending Machine** design in **Verilog** that accepts **5₹** and **10₹** inputs, dispenses a product, and provides change if necessary. It uses a **Mealy State Machine** approach, where outputs depend on both the current state and the current input.
 
+---
+
+## Features
+
+- **Mealy State Machine** for determining outputs based on current state and input  
+- **Coin Input**: Accepts 5₹ (binary `01`) and 10₹ (binary `10`)  
+- **Product Dispensing**: As soon as sufficient money is inserted, output goes high to dispense the product  
+- **Change Output**: Provides change (in 2-bit binary) if extra money is inserted  
+  - `2'b01` = 5₹ change  
+  - `2'b10` = 10₹ change  
+- **Reset Logic**: Returns the machine to state `s0` when reset is high  
+
+---
+
+## How It Works
+
+### State Definitions
+- `s0` (00): The user has inserted 0₹ so far  
+- `s1` (01): The user has inserted 5₹ so far  
+- `s2` (10): The user has inserted 10₹ so far  
+
+> **Note**: In a Mealy machine, the outputs depend on both the current state and the current input.
+
+### Coin Inputs
+- `00` = No new coin inserted  
+- `01` = 5₹ coin inserted  
+- `10` = 10₹ coin inserted  
+
+### Outputs
+- **out**: Goes high (1) to indicate that a product has been dispensed  
+- **change** (2 bits): Indicates how much change is returned, if any
+
+### Waveform
 <p align="center">
-  <img src="https://via.placeholder.com/600x300.png?text=Insert+Your+Vending+Machine+Diagram+Here" 
-       alt="Vending Machine Diagram" width="70%">
+  <img src="![image](https://github.com/user-attachments/assets/6f40d472-76d8-476b-bff8-994256cea60b)
+" alt="Vending Machine State Diagram" width="60%">
 </p>
 
----
-
-## :sparkles: Features
-- **Mealy State Machine** based design for deterministic outputs.  
-- **Coin Input**: Accepts and tracks coin insertions (e.g., 5¢, 10¢, 25¢).  
-- **Product Dispensing**: Dispenses product automatically when the full amount is reached.  
-- **Change Output**: Calculates change if the user inserts more than required.  
-- **Reset & Error States**: Handles reset conditions and undefined states gracefully.
 
 ---
 
-## :hammer_and_wrench: Project Structure
+## Project Structure
 
-    ├── src
-    │   ├── vending_machine.v       # Main Verilog module for vending machine logic
-    │   ├── vending_machine_tb.v    # Testbench
-    │   └── ...
-    ├── docs
-    │   ├── images                  # Folder for screenshots and diagrams
-    │   └── ...
-    ├── README.md                   # This file!
-    └── ...
+
 
 ---
 
-## :computer: How It Works
+## Simulation & Testing
 
-**State Machine Approach**  
-- The Mealy machine output depends on both the **current state** *and* the **current input**.  
-- Transitions occur on clock edges, and states update accordingly.
+1. **Clone the Repo**  
+   - `git clone https://github.com/YourUsername/vending_machine.git`  
+   - `cd vending_machine`
 
-**Coin Detection**  
-- Each coin type triggers a different input line (e.g., `coin_5`, `coin_10`, `coin_25`).  
-- The machine adds the coin’s value to an internal register.
+2. **Run Simulation**  
+   - Use your preferred Verilog simulator (ModelSim, Vivado, Icarus Verilog, etc.).
+   - Compile the main module and the testbench.
+   - Run the testbench to observe console output or waveforms.
 
-**Dispense Logic**  
-- If the total inserted is ≥ the product price, the machine transitions to a dispense state.  
-- If the total is *more* than required, the difference is output as change.
-
-**Reset State**  
-- Ensures the machine returns to a known stable state to avoid undefined behavior.
-
-<p align="center">
-  <img src="https://via.placeholder.com/500x300.png?text=Insert+Flow+Diagram" 
-       alt="Vending Machine Flow Diagram" width="60%">
-</p>
+3. **View Waveforms** (Optional)  
+   - If your testbench generates a `.vcd` file, you can open it in GTKWave or another waveform viewer to inspect state transitions, product dispensing signals, and change output.
 
 ---
 
-## :electric_plug: Getting Started
-
-### Clone the Repo
-
-    git clone https://github.com/YourUsername/Vending-Machine.git
-    cd Vending-Machine
-
-### Run Simulation
-
-Use your favorite Verilog simulator (ModelSim, Vivado, Icarus Verilog, etc.).  
-Compile the main module (`vending_machine.v`) and the testbench (`vending_machine_tb.v`).  
-Run the testbench to see the waveforms or console outputs.
-
-    iverilog -o vending_machine_tb.out src/vending_machine.v src/vending_machine_tb.v
-    vvp vending_machine_tb.out
-
-*(Replace with your simulator commands if using ModelSim or Vivado.)*
-
-### View Waveforms (optional)
-
-Open the `.vcd` file in GTKWave or any waveform viewer to observe state transitions and outputs in real-time.
-
----
-
-## :notebook_with_decorative_cover: File Details
+## File Details
 
 - **`vending_machine.v`**  
-  Contains the Mealy state machine logic, coin value addition, state transitions, and output generation.
+  The main Verilog module implementing the Mealy state machine. Accepts 5₹ and 10₹ as inputs, dispenses product, and gives change.
 
 - **`vending_machine_tb.v`**  
-  A testbench that simulates various scenarios:
-  - Inserting multiple coins.
-  - Overpaying and underpaying.
-  - Reset conditions and error states.
+  A testbench (not shown here) that simulates coin inputs, verifies correct dispense logic, checks change output, and tests the reset functionality.
 
 ---
 
-## :chart_with_upwards_trend: Example Waveform
+## State Table (From Diagram)
 
-| Signal        | Description                          |
-|---------------|--------------------------------------|
-| `clk`         | System clock                         |
-| `reset`       | Asynchronous reset signal            |
-| `coin_5/10/25`| Coin inputs                          |
-| `valid`       | Asserts when machine is ready        |
-| `dispense`    | Asserts when product is dispensed    |
-| `change`      | Indicates the amount of change       |
+Below is a table reflecting the transitions shown in the diagram.  
+Each row shows: (1) the current state, (2) the coin/input inserted,  
+(3) the next state after the transition, (4) whether the product is dispensed (output = 0 or 1),  
+and (5) the change returned in rupees.
 
-*(Feel free to insert an actual screenshot or snippet of your waveform here.)*
+| **Current State** | **Input (₹)** | **Next State**  | **Output** (Dispensed) | **Change (₹)** |
+|:-----------------:|:------------:|:---------------:|:----------------------:|:--------------:|
+| **S0 (0₹)**       | 0            | S0 (0₹)         | 0                      | 0              |
+| **S0 (0₹)**       | 0            | S0 (0₹)         | 0                      | 5              |
+| **S0 (0₹)**       | 0            | S0 (0₹)         | 0                      | 10             |
+| **S0 (0₹)**       | 5            | S1 (5₹)         | 0                      | 0              |
+| **S0 (0₹)**       | 10           | S2 (10₹)        | 0                      | 0              |
+| **S1 (5₹)**       | 0            | S0 (0₹)         | 0                      | 5              |
+| **S1 (5₹)**       | 5            | S2 (10₹)        | 0                      | 0              |
+| **S1 (5₹)**       | 10           | S0 (0₹)         | 1                      | 0              |
+| **S2 (10₹)**      | 0            | S0 (0₹)         | 0                      | 10             |
+| **S2 (10₹)**      | 5            | S0 (0₹)         | 1                      | 0              |
+| **S2 (10₹)**      | 10           | S0 (0₹)         | 1                      | 5              |
 
----
-
-## :bulb: Contributing
-
-1. **Fork** the repository.  
-2. Create a new **branch** (`git checkout -b feature/my-new-feature`).  
-3. **Commit** your changes (`git commit -am 'Add some feature'`).  
-4. **Push** to the branch (`git push origin feature/my-new-feature`).  
-5. **Open a Pull Request**.
-
----
-
-## :handshake: Acknowledgements
-
-- **Verilog docs & references**  
-- **Professors/Mentors** who guided on digital design and state machines  
-- **Online forums** for troubleshooting simulation environments  
+> **Notes:**
+> - **Input** = coin inserted (in ₹).  
+> - **Output** = 1 if product is dispensed, 0 otherwise.  
+> - **Change** (in ₹) is the amount returned if the user has inserted more than needed or cancels.
+> - After dispensing or returning the full amount, the machine resets to **S0 (0₹)**. 
 
 ---
 
-## :mailbox_with_mail: Contact
+## Contributing
 
-If you have any questions, issues, or suggestions:
+1. **Fork** this repository  
+2. Create a new **branch** (`git checkout -b feature/my-new-feature`)  
+3. **Commit** your changes (`git commit -am 'Add a new feature'`)  
+4. **Push** to the branch (`git push origin feature/my-new-feature`)  
+5. **Open a Pull Request** for discussion and review
 
-- **Email**: [you@example.com](mailto:you@example.com)  
-- **GitHub**: [YourUsername](https://github.com/YourUsername)
+---
 
+## Acknowledgements
+
+- **Verilog Documentation** & references  
+- **Mentors and Professors** for guidance on digital design  
+- **Arjun Narula (YouTube)** for clear and helpful digital design explanations  
+- **NPTEL Hardware Modelling course by Prof. Indranil Sengupta (YouTube)** for in-depth coverage of hardware modeling concepts
+ 
 ---
 
 **Happy Vending!** If you find this project helpful or interesting, please consider giving it a ⭐ on GitHub.
