@@ -1,5 +1,5 @@
 # Vending Machine (Mealy State Machine) 
-# :coffee ₹
+## :coffee ₹
 
 This project showcases a **Vending Machine** design in **Verilog** that accepts **5₹** and **10₹** inputs, dispenses a product, and provides change if necessary. It uses a **Mealy State Machine** approach, where outputs depend on both the current state and the current input.
 
