@@ -1,5 +1,5 @@
 # Vending Machine (Mealy State Machine) 
-# ☕🪙
+# 🧃🪙
 
 This project showcases a **Vending Machine** design in **Verilog** that accepts **5₹** and **10₹** inputs, dispenses a product, and provides change if necessary. It uses a **Mealy State Machine** approach, where outputs depend on both the current state and the current input.
 
@@ -37,7 +37,7 @@ This project showcases a **Vending Machine** design in **Verilog** that accepts 
 
 ### Waveform 
 <p align="left">
-  <img src="C:\Users\91889\OneDrive\Pictures\Screenshots\gtkwave.png" 
+  <img src="mealy_fsm/docs/gtkwave.png" 
    alt="Vending Machine State Diagram" width="60%">
 </p>
 
@@ -113,7 +113,7 @@ and (5) the change returned in rupees.
 > - **Change** (in ₹) is the amount returned if the user has inserted more than needed or cancels.
 > - After dispensing or returning the full amount, the machine resets to **S0 (0₹)**. 
 
-<p><img src= "C:\Users\91889\OneDrive\Pictures\Screenshots\state_diagram.png"></p>
+<p><img src= "mealy_fsm/docs/state_diagram.png"></p>
 ---
 
 ## 💡Contributing
