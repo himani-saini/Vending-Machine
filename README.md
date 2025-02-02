@@ -51,11 +51,10 @@ This project showcases a **Vending Machine** design in **Verilog** that accepts 
 │   ├── vending_machine.vvp    
 │   └── vending_machine.vcd     # Dumpfile 
 │   └── vending_machine_tb.v    # Testbench
-├── docs
-│   ├── images                  # Folder for screenshots and diagrams
-│   └── ...
+│   ├── docs                        # Folder for screenshots and diagrams
+│   └── gtkwave.png            
+│   └── state_diagram.png
 ├── README.md                   # This file!
-└── ...
 </pre>
 
 ---
