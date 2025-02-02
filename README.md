@@ -1,11 +1,11 @@
 # Vending Machine (Mealy State Machine) 
-## :coffee ₹
+## ☕🪙
 
 This project showcases a **Vending Machine** design in **Verilog** that accepts **5₹** and **10₹** inputs, dispenses a product, and provides change if necessary. It uses a **Mealy State Machine** approach, where outputs depend on both the current state and the current input.
 
 ---
 
-## Features
+## ✨Features
 
 - **Mealy State Machine** for determining outputs based on current state and input  
 - **Coin Input**: Accepts 5₹ (binary `01`) and 10₹ (binary `10`)  
@@ -17,7 +17,7 @@ This project showcases a **Vending Machine** design in **Verilog** that accepts 
 
 ---
 
-## How It Works
+##  💻How It Works
 
 ### State Definitions
 - `s0` (00): The user has inserted 0₹ so far  
@@ -26,31 +26,39 @@ This project showcases a **Vending Machine** design in **Verilog** that accepts 
 
 > **Note**: In a Mealy machine, the outputs depend on both the current state and the current input.
 
-### Coin Inputs
+### Coin Inputs 🪙
 - `00` = No new coin inserted  
 - `01` = 5₹ coin inserted  
 - `10` = 10₹ coin inserted  
 
-### Outputs
+### Outputs 
 - **out**: Goes high (1) to indicate that a product has been dispensed  
 - **change** (2 bits): Indicates how much change is returned, if any
 
-### Waveform
-<p align="center">
-  <img src="![image](https://github.com/user-attachments/assets/6f40d472-76d8-476b-bff8-994256cea60b)
+### Waveform 
+<p align="left">
+  <img src="C:\Users\91889\OneDrive\Pictures\Screenshots\gtkwave.png">
 " alt="Vending Machine State Diagram" width="60%">
 </p>
 
 
 ---
 
-## Project Structure
-
-
-
+## 🛠 Project Structure
+ ├── mealy fsm
+    │   ├── vending_machine.v       # Main Verilog module for vending machine logic
+    │   ├── vending_machine.vvp     # 
+    │   └── vending_machine.vcd     # Dumpfile 
+    │   └── vending_machine_tb.v    # Testbench
+    ├── docs
+    │   ├── images                  # Folder for screenshots and diagrams
+    │   └── ...
+    ├── README.md                   # This file!
+    └── ...
+    
 ---
 
-## Simulation & Testing
+## 🔌Simulation & Testing
 
 1. **Clone the Repo**  
    - `git clone https://github.com/YourUsername/vending_machine.git`  
@@ -66,7 +74,7 @@ This project showcases a **Vending Machine** design in **Verilog** that accepts 
 
 ---
 
-## File Details
+## 📔File Details
 
 - **`vending_machine.v`**  
   The main Verilog module implementing the Mealy state machine. Accepts 5₹ and 10₹ as inputs, dispenses product, and gives change.
@@ -103,11 +111,12 @@ and (5) the change returned in rupees.
 > - **Change** (in ₹) is the amount returned if the user has inserted more than needed or cancels.
 > - After dispensing or returning the full amount, the machine resets to **S0 (0₹)**. 
 
+<img src= "C:\Users\91889\OneDrive\Pictures\Screenshots\state_diagram.png">
 ---
 
 ## Contributing
 
-1. **Fork** this repository  
+1. **Fork** this repository 
 2. Create a new **branch** (`git checkout -b feature/my-new-feature`)  
 3. **Commit** your changes (`git commit -am 'Add a new feature'`)  
 4. **Push** to the branch (`git push origin feature/my-new-feature`)  
@@ -115,10 +124,9 @@ and (5) the change returned in rupees.
 
 ---
 
-## Acknowledgements
+## :handshake:Acknowledgements
 
 - **Verilog Documentation** & references  
-- **Mentors and Professors** for guidance on digital design  
 - **Arjun Narula (YouTube)** for clear and helpful digital design explanations  
 - **NPTEL Hardware Modelling course by Prof. Indranil Sengupta (YouTube)** for in-depth coverage of hardware modeling concepts
  
