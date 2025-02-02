@@ -1,5 +1,5 @@
 # Vending Machine (Mealy State Machine) 
-## ☕🪙
+# ☕🪙
 
 This project showcases a **Vending Machine** design in **Verilog** that accepts **5₹** and **10₹** inputs, dispenses a product, and provides change if necessary. It uses a **Mealy State Machine** approach, where outputs depend on both the current state and the current input.
 
@@ -37,25 +37,27 @@ This project showcases a **Vending Machine** design in **Verilog** that accepts 
 
 ### Waveform 
 <p align="left">
-  <img src="C:\Users\91889\OneDrive\Pictures\Screenshots\gtkwave.png">
-" alt="Vending Machine State Diagram" width="60%">
+  <img src="C:\Users\91889\OneDrive\Pictures\Screenshots\gtkwave.png" 
+   alt="Vending Machine State Diagram" width="60%">
 </p>
 
 
 ---
 
 ## 🛠 Project Structure
- ├── mealy fsm
-    │   ├── vending_machine.v       # Main Verilog module for vending machine logic
-    │   ├── vending_machine.vvp     # 
-    │   └── vending_machine.vcd     # Dumpfile 
-    │   └── vending_machine_tb.v    # Testbench
-    ├── docs
-    │   ├── images                  # Folder for screenshots and diagrams
-    │   └── ...
-    ├── README.md                   # This file!
-    └── ...
-    
+<pre>
+├── mealy fsm
+│   ├── vending_machine.v       # Main Verilog module for vending machine logic
+│   ├── vending_machine.vvp    
+│   └── vending_machine.vcd     # Dumpfile 
+│   └── vending_machine_tb.v    # Testbench
+├── docs
+│   ├── images                  # Folder for screenshots and diagrams
+│   └── ...
+├── README.md                   # This file!
+└── ...
+</pre>
+
 ---
 
 ## 🔌Simulation & Testing
@@ -111,10 +113,10 @@ and (5) the change returned in rupees.
 > - **Change** (in ₹) is the amount returned if the user has inserted more than needed or cancels.
 > - After dispensing or returning the full amount, the machine resets to **S0 (0₹)**. 
 
-<img src= "C:\Users\91889\OneDrive\Pictures\Screenshots\state_diagram.png">
+<p><img src= "C:\Users\91889\OneDrive\Pictures\Screenshots\state_diagram.png"></p>
 ---
 
-## Contributing
+## 💡Contributing
 
 1. **Fork** this repository 
 2. Create a new **branch** (`git checkout -b feature/my-new-feature`)  
